@@ -67,6 +67,7 @@ class MainActivity : AppCompatActivity() {
             cursor.close()
         }
 
+
         val adapter = MyPagerAdapter(supportFragmentManager,0)
         adapter.updateFragments(fragments)
         viewPager.adapter = adapter
