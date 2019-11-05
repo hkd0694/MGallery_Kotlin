@@ -35,8 +35,7 @@ class PhotoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         Glide.with(this).load(uri).into(imageView)
     }
-
-
+    
     companion object {
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
