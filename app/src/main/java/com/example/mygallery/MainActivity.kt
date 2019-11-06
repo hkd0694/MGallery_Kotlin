@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
                 //권한 요청
                 ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),REQUEST_READ_EXTERNAL_STORAGE)
             }
-        } else{
+        } else {
             //권한이 이미 허용됨.
             getAllPhoto()
         }
@@ -58,17 +58,18 @@ class MainActivity : AppCompatActivity() {
             MediaStore.Images.ImageColumns.DATE_TAKEN + " DESC") //찍은 날짜 내림차순
 
         val fragments = ArrayList<Fragment>()
+
         if(cursor != null) {
             while(cursor.moveToNext()) {
                 val uri = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA))
                 Log.e("Start",uri)
-                fragments.add(PhotoFragment.newInstance(uri,"dd"))
+                fragments.add(PhotoFragment.newInstance(uri))
             }
             cursor.close()
         }
 
 
-        val adapter = MyPagerAdapter(supportFragmentManager,0)
+        val adapter = MyPagerAdapter(supportFragmentManager)
         adapter.updateFragments(fragments)
         viewPager.adapter = adapter
 

@@ -23,11 +23,7 @@ class PhotoFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_photo, container, false)
     }
 
@@ -35,13 +31,13 @@ class PhotoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         Glide.with(this).load(uri).into(imageView)
     }
-    
+
     companion object {
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance(param1: String) =
             PhotoFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_URI,uri)
+                    putString(ARG_URI,param1)
                 }
             }
     }
